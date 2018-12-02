@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Better: Efficiency Perfected</string>
+    <string name="title">Better</string>
+    <string name="description">smarter,\nmore efficient apps\nfor the intelligent user</string>
+    <string name="attributions">by David Hopping\nand Joe Franke</string>
+    <string name="toolate">I\'m Already Tracer</string>
+    <string name="clockBackgroundDescription">The Sky Color for Better Clock</string>
+    <string name="geoffChallen">Geoff Challen</string>
+</resources>

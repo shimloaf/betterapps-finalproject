@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+    <color name="daySky">#00bfff</color>
+    <color name="nightSky">#323639</color>
+    <color name="nightColor">#fcfaea</color>
+    <color name="dayColor">#00008b</color>
+    <color name="burntRed">#631809</color>
+    <color name="mutedGreen">#4b632f</color>
+    <color name="steelyGrey">#747a6e</color>
+    <color name="cerulean">#cce2e2</color>
+
+</resources>
