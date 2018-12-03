@@ -12,13 +12,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.ImageView;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
 import android.view.View;
-import android.view.View.OnClickListener;
-
 public class BetterEight extends AppCompatActivity{
 
     private static final String TAG = "EIGHTLOG";
@@ -38,13 +32,13 @@ public class BetterEight extends AppCompatActivity{
 
         mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         mSensorManager.registerListener(sensorListener, mSensorManager.getDefaultSensor
-                (Sensor.TYPE_ACCELEROMETER), SensorManager.SENSOR_DELAY_NORMAL);
+                (Sensor.TYPE_ACCELEROMETER), 1000000);
 
         acceleration = mSensorManager.GRAVITY_EARTH;
         prevAcceleration = mSensorManager.GRAVITY_EARTH;
         shakinVal = 0.00f;
 
-        message = "Ask it question then give it a shake...";
+        message = "Ask it question \nthen give it \na shake...";
         TextView result = findViewById(R.id.ballResult);
         result.setText(message);
 
@@ -57,37 +51,52 @@ public class BetterEight extends AppCompatActivity{
         @Override
         public void onSensorChanged(SensorEvent event) {
 
-            float x = event.values[0];
-            float y = event.values[1];
-            float z = event.values[2];
+                float x = event.values[0];
+                float y = event.values[1];
+                float z = event.values[2];
 
-            prevAcceleration = acceleration;
-            acceleration = (float) Math.sqrt((double) (x*x + y*y+ z*z));
-            float delta = acceleration - prevAcceleration;
+                prevAcceleration = acceleration;
+                acceleration = (float) Math.sqrt((double) (x * x + y * y + z * z));
+                float delta = acceleration - prevAcceleration;
 
-            shakinVal = shakinVal * 0.9f + delta;
+                shakinVal = shakinVal * 0.9f + delta;
 
-            if (shakinVal > 35 && canShake) {
 
-                canShake = false;
-                //shaking detected, fade out, wait a random time, fade in
+                if (shakinVal > 12 && canShake) {
 
-                TextView result = findViewById(R.id.ballResult);
-                result.setVisibility(View.INVISIBLE);
+                    canShake = false;
 
-                Handler handler = new Handler();
-                handler.postDelayed(new Runnable() {
-                    public void run() {
-                        pick_option();
-                        TextView result = findViewById(R.id.ballResult);
-                        result.setVisibility(View.VISIBLE);
-                        canShake = true;
-                    }
-                }, 2000 + (1000 * Math.round(Math.random()*3)));
+                    //shaking detected, fade out, wait a random time, fade in
+
+                    TextView result = findViewById(R.id.ballResult);
+                    result.setVisibility(View.INVISIBLE);
+
+
+                    Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
+                        public void run() {
+                            pick_option();
+                            TextView result = findViewById(R.id.ballResult);
+                            result.setVisibility(View.VISIBLE);
+
+                            Handler handler = new Handler();
+                            handler.postDelayed(new Runnable() {
+                                public void run() {
+                                    canShake = true;
+
+                                }
+
+                            }, 3000);
+
+
+
+
+                        }
+
+                    }, 3000 + (1000 * Math.round(Math.random() * 2)));
 
 
             }
-
 
 
         }
@@ -98,130 +107,125 @@ public class BetterEight extends AppCompatActivity{
         }
     };
 
-    private void fadeText(boolean b) {
-
-        if (b) {
-
-        } else {
-
-
-        }
-
-
-
-    }
-
     public void pick_option() {
         TextView result = findViewById(R.id.ballResult);
 
         int choice = 0;
 
-        choice = (int) Math.floor(Math.random()*34);
+        choice = (int) (Math.random()*40);
+        message = "I don't know.";
 
         switch (choice) {
             case 0:
-                message = "I don't know.";
+                message = "Dunno, try the \nmagic 9-ball.";
                 break;
             case 1:
-                message = "Ask again later, or better yet, don't.";
+                message = "Ask again later, or\nbetter yet, don't.";
                 break;
             case 2:
                 message = "Ask an expert.";
                 break;
             case 3:
-                message = "I really have no idea.";
+                message = "I really have\nno idea.";
                 break;
             case 4:
-                message = "I don't want to answer that.";
+                message = "I don't want \nto answer that.";
                 break;
             case 5:
-                message = "Why do you think I would know the answer to that?";
+                message = "Why do you think I \nwould know the \nanswer to \nthat?";
                 break;
             case 6:
-                message = "No clue, honestly.";
+                message = "No clue, \nhonestly.";
                 break;
             case 7:
-                message = "Yes. No wait, actually, No. What was the question again?";
+                message = "Yes. No wait, actually, \nNo. What was the \nquestion again?";
                 break;
             case 8:
-                message = "Have you tried Wikipedia?";
+                message = "Have you tried \nWikipedia?";
                 break;
             case 9:
                 message = "... No comment.";
                 break;
             case 10:
-                message = "I'm not gonna answer that.";
+                message = "I'm not gonna \nanswer that.";
                 break;
             case 11:
-                message = "I know the answer, I'm just not going to tell you.";
+                message = "I know the answer, I'm \njust not going to\ntell you.";
                 break;
             case 12:
-                message = "Do you honestly think I care?";
+                message = "Do you honestly \nthink I care?";
                 break;
             case 13:
-                message = "Despite the name, I'm not really magic, pal.";
+                message = "Despite the name, \nI'm not really \nmagic, buddy.";
                 break;
             case 14:
-                message = "I... I don't wanna talk about it right now.";
+                message = "I... I don't wanna \ntalk about it \nright now.";
                 break;
             case 15:
-                message = "Signs point to Yes! Oh, hang on a minute, that was for the last guy.";
+                message = "Signs point to Yes! \nWait, that wasn't \nfor you.";
                 break;
             case 16:
-                message = "I don't know, have you tried posting on the forum?";
+                message = "I don't know, have \nyou tried posting \non the forum?";
                 break;
             case 17:
-                message = "I don't know, have you tried going to office hours?";
+                message = "I don't know, have \nyou tried going to \noffice hours?";
                 break;
             case 18:
-                message = "Signs point to maybe.";
+                message = "Signs point \nto maybe.";
                 break;
             case 19:
-                message = "Results hazy, don't try again.";
+                message = "Results hazy, \ndon't try again.";
                 break;
             case 20:
                 message = "Definitely maybe.";
                 break;
             case 21:
-                message = "Could be, I don't know.";
+                message = "Could be, \nI don't know.";
                 break;
             case 22:
-                message = "Look inside yourself, the true answer is within.";
+                message = "Look inside yourself, \nthe true answer \nis within.";
                 break;
             case 23:
-                message = "I think you know the answer.";
+                message = "I think you know \nthe answer.";
                 break;
             case 24:
-                message = "Lalalala, I can't hear you!";
+                message = "La La La La La,\nI can't hear \nyou!";
                 break;
             case 25:
-                message = "What was that? Oh wait, I don't care.";
+                message = "What was that? Oh \nwait, I don't \ncare.";
                 break;
             case 26:
-                message = "Eh, I really don't feel like being magic right now.";
+                message = "Eh, I really don't \nfeel like being \nmagic right \nnow.";
                 break;
             case 27:
-                message = "W-where am I? Last thing I remember I was sitting in the corner pocket!";
+                message = "W-where am I? Last \nthing I remember I\nwas sitting in the \ncorner pocket!";
                 break;
             case 28:
-                message = "Why the hell are you asking an 8-ball?";
+                message = "Why the hell \nare you asking \nan 8-ball?";
                 break;
             case 29:
-                message = "Uhhhhh... Hang on I know this one... Uhhhh... Sixty Four point Two?";
+                message = "Uhhhhh... Hang on I \nknow this one... \nUhhhh... Sixty\npoint Two?";
+                break;
             case 30:
-                message = "Let me answer your question with another question. Who cares?";
+                message = "Let me answer \nyour question with \nanother question. \nWho cares?";
                 break;
             case 31:
-                message = "Come back in a year, I'll have figured it out by then";
+                message = "Come back in a \nyear, I'll have \nfigured it out \nby then.";
                 break;
             case 32:
-                message = "Help! I've been trapped in this 8-Ball for 35 years!";
+                message = "Help! I've been stuck \nin this 8-Ball for \n35 years!";
                 break;
             case 33:
-                message = "Don't know, don't care.";
+                message = "Don't know, \ndon't care.";
                 break;
             case 34:
-                message = "You're always asking me questions. Don't you think I have questions too?";
+                message = "You're always asking \nme questions. Don't \nyou think I have \nquestions too?";
+                break;
+            case 35:
+                message = "Gimme 20 bucks \nand try again.";
+                break;
+            case 36:
+                message = "Signs point in \nall directions.";
                 break;
         }
 
