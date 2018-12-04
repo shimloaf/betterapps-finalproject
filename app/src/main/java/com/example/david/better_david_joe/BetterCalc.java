@@ -109,51 +109,54 @@ public class BetterCalc extends AppCompatActivity {
 
         double result;
 
-        if (sign.equals("-")) {
-            result = num1 - num2;
+        switch (sign) {
+            case "-":
+                result = num1 - num2;
 
-            if ((long) num1 - (long) num2 > Integer.MAX_VALUE
-                    || (long) num1 - (long) num2 < -Integer.MAX_VALUE) {
-                result = 3.0;
-            }
+                if ((long) num1 - (long) num2 > Integer.MAX_VALUE
+                        || (long) num1 - (long) num2 < -Integer.MAX_VALUE) {
+                    result = 3.0;
+                }
+                break;
+            case "+":
+                result = num1 + num2;
 
-        } else if (sign.equals("+")) {
-            result = num1 + num2;
+                if ((long) num1 + (long) num2 > Integer.MAX_VALUE
+                        || (long) num1 + (long) num2 < -Integer.MAX_VALUE) {
+                    result = 3.0;
+                }
 
-            if ((long) num1 + (long) num2 > Integer.MAX_VALUE
-                    ||(long) num1 + (long) num2 < -Integer.MAX_VALUE) {
-                result = 3.0;
-            }
+                break;
+            case "/":
 
-        } else if (sign.equals("/")) {
+                if (num2 == 0) {
+                    result = 3.0;
+                    error = "divideByZero";
+                    return result;
+                }
 
-            if (num2 == 0) {
-                result = 3.0;
-                error = "divideByZero";
-                return result;
-            }
+                result = num1 / num2;
 
-            result = num1 / num2;
+                if ((long) num1 / (long) num2 > Integer.MAX_VALUE
+                        || (long) num1 / (long) num2 < -Integer.MAX_VALUE) {
+                    result = 3.0;
+                }
 
-            if ((long) num1 / (long) num2 > Integer.MAX_VALUE
-                    || (long) num1 / (long) num2 < -Integer.MAX_VALUE) {
-                result = 3.0;
-            }
+                break;
+            case "*":
 
-        } else if (sign.equals("*")){
+                result = num1 * num2;
 
-
-
-            result = num1 * num2;
-
-            if ((long) num1 * (long) num2 > Integer.MAX_VALUE
-                    || (long) num1 * (long) num2 < -Integer.MAX_VALUE) {
-                result = 3.0;
-                error = "integerOverflowError";
-                return result;
-            }
-        } else {
-            result = num1;
+                if ((long) num1 * (long) num2 > Integer.MAX_VALUE
+                        || (long) num1 * (long) num2 < -Integer.MAX_VALUE) {
+                    result = 3.0;
+                    error = "integerOverflowError";
+                    return result;
+                }
+                break;
+            default:
+                result = num1;
+                break;
         }
 
 

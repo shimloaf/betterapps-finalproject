@@ -6,4 +6,8 @@
     <string name="toolate">I\'m Already Tracer</string>
     <string name="clockBackgroundDescription">The Sky Color for Better Clock</string>
     <string name="geoffChallen">Geoff Challen</string>
+    <string name="coldWet">It is Cold and Wet.</string>
+    <string name="hotString">It is Hot.</string>
+    <string name="hotWet">It is Hot  and Wet.</string>
+    <string name="coldString">It is cold.</string>
 </resources>
