@@ -103,7 +103,7 @@
         android:background="@drawable/roundedcorners"
         android:onClick="openEight"
         android:src="@drawable/better_eight_icon"
-        app:layout_constraintBottom_toTopOf="@+id/botButton"
+        app:layout_constraintBottom_toTopOf="@+id/gameButton"
         app:layout_constraintEnd_toStartOf="@+id/oracleButton"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/clockButton" />
@@ -129,7 +129,7 @@
         app:layout_constraintVertical_bias="0.657" />
 
     <ImageButton
-        android:id="@+id/botButton"
+        android:id="@+id/gameButton"
         android:layout_width="130dp"
         android:layout_height="130dp"
         android:layout_marginStart="40dp"
@@ -138,13 +138,14 @@
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginBottom="40dp"
-        android:onClick="openBot"
+        android:onClick="openGame"
+        android:src="@drawable/better_game_icon"
         android:background="@drawable/roundedcorners"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/calcButton"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ballButton"
-        tools:srcCompat="@tools:sample/backgrounds/scenic" />
+        tools:src="@tools:sample/backgrounds/scenic" />
 
 
     <ImageButton
@@ -156,6 +157,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="40dp"
         android:layout_marginRight="40dp"
+        android:contentDescription="@string/the_button_to_open_better_oracle"
         android:layout_marginBottom="8dp"
         android:onClick="openOracle"
         android:background="@drawable/roundedcorners"
@@ -172,6 +174,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
+        android:contentDescription="@string/the_button_to_open_better_calc"
         android:layout_marginEnd="40dp"
         android:background="@drawable/roundedcorners"
         android:layout_marginRight="40dp"
@@ -180,7 +183,7 @@
         android:src="@drawable/better_calc_icon"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/botButton"
+        app:layout_constraintStart_toEndOf="@+id/gameButton"
         app:layout_constraintTop_toBottomOf="@+id/oracleButton" />
 
     <TextView
@@ -212,7 +215,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
-        android:text="Better Chatbot"
+        android:text="@string/better_game"
         android:textColor="@color/dayColor"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

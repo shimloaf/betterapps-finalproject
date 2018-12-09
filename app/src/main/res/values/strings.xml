@@ -6,6 +6,22 @@
     <string name="toolate">I\'m Already Tracer</string>
     <string name="clockBackgroundDescription">The Sky Color for Better Clock</string>
     <string name="geoffChallen">Geoff Challen</string>
+    <string name="rulesText">
+        \nThe object of Better Game is to obtain \"Points\".\n\n
+        One \"Point\" shall be gained for each press of \"Better Gameplay,\" and one \"Point\" shall be docked for every press of \"Better Obstacle.\"\n\n
+        When ten \"Points\" have been earned, one \"Better Point\" shall be gained.\n\n
+        If the current \"Point\" total is zero, \"Better Obstacle\" shall deduct one \"Better Point\" instead.\n\n
+        Once ten \"Better Points\" have been earned, \"Better Goal\" shall be unlocked, and for each
+        press of \"Better Goal,\" one \"Win\" shall be awarded.\n\n
+        After ten \"Wins,\" have been awarded, a \"Better Win\" shall be awarded, and it is at this
+        point the player should consider themselves victorious.\n\n
+        If, at any point in the game the total \"Points\" value drops below negative five, the game is lost.\n\n
+        Have fun and try your best!\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n
+        Disclaimer: There is no guarantee that \"Better Game: Play Perfected\" will provide any type of \"Fun\" to the user,
+        nor is there any guarantee that \"Better Game: Play Perfected\" will provide any type of \"Challenge.\" The user
+        shall assume any and all risks of mental or bodily harm due to accidental fun.\n\n
+    </string>
+    <string name="betterGameTitle">Welcome to Better Game: Play Perfected.</string>
     <string name="primaryQuestion">The Better Oracle welcomes thee\u2026\n
         To try and find your destiny\u2026\n
         Reveal your fortune, fill the gaps\u2026\n
@@ -119,4 +135,9 @@
     <string name="better_oracle">Better Oracle</string>
     <string name="better_calculator">Better Calculator</string>
     <string name="better_weather">Better Weather</string>
+    <string name="better_game">Better Game</string>
+    <string name="the_button_to_open_better_oracle">The button to open Better Oracle</string>
+    <string name="the_button_to_open_better_calc">The button to open Better Calc</string>
+    <string name="betterRules">Better Rules</string>
+    <string name="better_game_play">Better Game: Play Perfected</string>
 </resources>

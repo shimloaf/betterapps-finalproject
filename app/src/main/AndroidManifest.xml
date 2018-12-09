@@ -14,7 +14,8 @@
         android:supportsRtl="true"
         android:usesCleartextTraffic="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".BetterLauncher">
+        <activity android:name=".BetterLauncher"
+            android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -26,32 +27,32 @@
                 <category android:name="android.intent.category.HOME"/>
             </intent-filter>
         </activity>
-        <activity android:name=".BetterClock">
+        <activity android:name=".BetterClock" android:label="@string/better_clock" >
             <intent-filter>
                 <action android:name="android.intent.action.VIEW"/>
             </intent-filter>
         </activity>
-        <activity android:name=".BetterWeather">
+        <activity android:name=".BetterWeather" android:label="@string/better_weather" >
             <intent-filter>
                 <action android:name="android.intent.action.VIEW"/>
             </intent-filter>
         </activity>
-        <activity android:name=".BetterEight">
+        <activity android:name=".BetterEight" android:label="@string/better_8_ball" >
             <intent-filter>
                 <action android:name="android.intent.action.VIEW"/>
             </intent-filter>
         </activity>
-        <activity android:name=".BetterOracle">
+        <activity android:name=".BetterOracle" android:label="@string/better_oracle" >
             <intent-filter>
                 <action android:name="android.intent.action.VIEW"/>
             </intent-filter>
         </activity>
-        <activity android:name=".BetterCalc">
+        <activity android:name=".BetterCalc" android:label="@string/better_calculator" >
             <intent-filter>
                 <action android:name="android.intent.action.VIEW"/>
             </intent-filter>
         </activity>
-        <activity android:name=".BetterBot">
+        <activity android:name=".BetterGame" android:label="@string/better_game_play" >
             <intent-filter>
                 <action android:name="android.intent.action.VIEW"/>
             </intent-filter>

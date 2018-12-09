@@ -1,22 +1,14 @@
 package com.example.david.better_david_joe;
 
 import android.Manifest;
-import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.location.Location;
-import android.location.LocationManager;
-import android.support.constraint.ConstraintLayout;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import android.widget.ImageView;
-import android.widget.Toast;
 
 public class BetterApp extends AppCompatActivity implements ActivityCompat.OnRequestPermissionsResultCallback {
 
@@ -72,8 +64,8 @@ public class BetterApp extends AppCompatActivity implements ActivityCompat.OnReq
         startActivity(appBrowser);
     }
 
-    public void openBot(View view) {
-        Intent appBrowser = new Intent(BetterApp.this, BetterBot.class);
+    public void openGame(View view) {
+        Intent appBrowser = new Intent(BetterApp.this, BetterGame.class);
         startActivity(appBrowser);
     }
 
