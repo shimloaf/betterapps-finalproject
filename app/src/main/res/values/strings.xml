@@ -107,6 +107,16 @@
     </string-array>
     <string name="coldWet">It is Cold and Wet.</string>
     <string name="hotString">It is Hot.</string>
-    <string name="hotWet">It is Hot  and Wet.</string>
+    <string name="hotWet">It is Hot and Wet.</string>
     <string name="coldString">It is cold.</string>
+    <string name="hintTextChatbot">Type a message to Better Chatbot!</string>
+    <string name="weatherBackdropDesc">The weather backdrops to display the type of weather.</string>
+    <string name="loadingReport">Loading your Weather Report.</string>
+    <string name="clockButtonDesc">Button to take you to better clock.</string>
+    <string name="better_clock">Better Clock</string>
+    <string name="betterWeatherButtonDesc">The button to take you to Better Weather</string>
+    <string name="better_8_ball">Better 8-Ball</string>
+    <string name="better_oracle">Better Oracle</string>
+    <string name="better_calculator">Better Calculator</string>
+    <string name="better_weather">Better Weather</string>
 </resources>

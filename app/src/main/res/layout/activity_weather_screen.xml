@@ -12,6 +12,7 @@
     <ImageView
         android:id="@+id/weatherBackdrop"
         android:layout_width="match_parent"
+        android:contentDescription="@string/weatherBackdropDesc"
         android:layout_height="match_parent"
         android:scaleType="fitXY"
         app:srcCompat="@drawable/sun_background" />
@@ -22,6 +23,7 @@
         android:layout_height="match_parent"
         android:layout_marginBottom="40dp"
         android:gravity="center"
+        android:text="@string/loadingReport"
         android:textSize="60sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

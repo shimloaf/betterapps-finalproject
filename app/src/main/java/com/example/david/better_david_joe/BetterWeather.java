@@ -1,10 +1,14 @@
 package com.example.david.better_david_joe;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.ImageView;
@@ -28,50 +32,50 @@ import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
-public class BetterWeather extends AppCompatActivity {
+public class BetterWeather extends AppCompatActivity implements ActivityCompat.OnRequestPermissionsResultCallback{
     private static final String TAG = "WEATHERLOG";
+    private static final int REQUEST_LOCATION_CODE = 1;
     private static RequestQueue requestQueue;
     private String weatherType = "A bit Challen Out Today";
     private int temperature;
     private static int woeid;
     private boolean hot;
     private boolean wet;
+    private String city;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestQueue = Volley.newRequestQueue(this);
 
-        LocationManager lm = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
+        float currentLatitude;
+        float currentLongitude;
 
-        float currentLatitude = 22.32f;
-        float currentLongitude = 63.23f;
+        if ((ContextCompat.checkSelfPermission(BetterWeather.this, Manifest.permission.ACCESS_FINE_LOCATION)
+                != PackageManager.PERMISSION_GRANTED)
+                || (ContextCompat.checkSelfPermission(BetterWeather.this, Manifest.permission.ACCESS_COARSE_LOCATION)
+                != PackageManager.PERMISSION_GRANTED)) {
+            ActivityCompat.requestPermissions(BetterWeather.this,
+                    new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
+                    REQUEST_LOCATION_CODE);
+
+        } else {
+
+            LocationManager lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 
 
-        try {
             Location location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
             //grab the longitude and latitude of the user
             currentLongitude = (float) location.getLongitude();
             currentLatitude = (float) location.getLatitude();
 
+            Log.d(TAG, currentLatitude + ", " + currentLongitude);
+
+            setContentView(R.layout.activity_weather_screen);
             startAPICall(currentLatitude, currentLongitude);
-
-        } catch(SecurityException e){
-
-            Intent appBrowser = new Intent(BetterWeather.this, BetterApp.class);
-            startActivity(appBrowser);
-
-            Context context = getApplicationContext();
-            CharSequence text = "Location access required!";
-            int duration = Toast.LENGTH_LONG;
-
-            Toast toast = Toast.makeText(context, text, duration);
-            toast.show();
-
 
 
         }
-
     }
 
     /**
@@ -95,7 +99,7 @@ public class BetterWeather extends AppCompatActivity {
                             try {
                                 JSONObject firstLocation = response.getJSONObject(0);
                                 woeid = firstLocation.getInt("woeid");
-
+                                city = firstLocation.getString("title");
                                 //second API call for weather data
                                 try {
                                     JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
@@ -132,13 +136,6 @@ public class BetterWeather extends AppCompatActivity {
                                     e.printStackTrace();
                                 }
 
-
-
-
-
-
-
-
                             } catch (JSONException e) {
                                 Log.d(TAG, e.toString());
                             }
@@ -159,25 +156,31 @@ public class BetterWeather extends AppCompatActivity {
 
     private void initializeLayout() {
         String theReport = weatherType + " and " + temperature;
-        setContentView(R.layout.activity_weather_screen);
         TextView weatherReport = findViewById(R.id.weatherReport);
+        ImageView weatherBackground = findViewById(R.id.weatherBackdrop);
 
         hot = temperature > 25;
 
         wet = !weatherType.equals("c") && !weatherType.equals("lc")
                 && !weatherType.equals("hc");
 
+        String geoffChallen;
+
         if (hot && wet) {
-            weatherReport.setText(getString(R.string.hotWet));
+            geoffChallen = getString(R.string.hotWet);
+            weatherBackground.setImageResource(R.drawable.hot_and_wet_background);
         } else if (!hot && wet) {
-            weatherReport.setText(getString(R.string.coldWet));
+            geoffChallen = getString(R.string.coldWet);
+            weatherBackground.setImageResource(R.drawable.cold_and_wet_background);
         } else if (hot) {
-            weatherReport.setText(getString(R.string.hotString));
+            geoffChallen = getString(R.string.hotString);
+            weatherBackground.setImageResource(R.drawable.hot_background);
         } else {
-            weatherReport.setText(getString(R.string.coldString));
+            geoffChallen = getString(R.string.coldString);
+            weatherBackground.setImageResource(R.drawable.cold_background);
         }
 
-
+        weatherReport.setText(geoffChallen);
 
     }
 
