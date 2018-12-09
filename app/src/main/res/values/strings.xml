@@ -6,6 +6,105 @@
     <string name="toolate">I\'m Already Tracer</string>
     <string name="clockBackgroundDescription">The Sky Color for Better Clock</string>
     <string name="geoffChallen">Geoff Challen</string>
+    <string name="primaryQuestion">The Better Oracle welcomes thee\u2026\n
+        To try and find your destiny\u2026\n
+        Reveal your fortune, fill the gaps\u2026\n
+        On the crystal ball, provide three taps\u2026\n</string>
+    <string name="sexQuestion">To tell your fortune I must know,\n
+        A few details ye have to show\u2026
+        \nI\'ll start off easy, give it a whirl,
+        \nBe thou boy or be thou girl?</string>
+    <string name="countryQuestion">Answer my questions, don\'t be late\u2026\n
+        This next one will decide your fate\u2026\n
+        Since humans tend to walk and roam,\n
+        Of these great nations, which is home?</string>
+    <string name="ageQuestion">
+        My third request you shall not shun,\n
+        We must return to chapter one\u2026\n
+        As life\'s a book read page by page\n
+        Divulge your birthday, reveal your age\u2026
+    </string>
+    <string name="godQuestion">
+        My fourth request goes back in time\u2026\n
+        To when the world was in it\'s prime\u2026\n
+        All ancient folk revered divinity\u2026\n
+        To which god do you give affinity?
+    </string>
+
+    <string name="sillyQuestion">
+        My fifth question is by far the best\u2026\n
+        Answer this at my behest\u2026\n
+        Provide the answer to this query:\n
+    </string>
+    <string name="crystalBall">Oracle Crystal Ball</string>
+    <string name="enter_your_date_of_birth">Enter your Date of Birth</string>
+    <string name="avow">Avow</string>
+
+    <string-array name="sillyQs">
+        <item>Do you floss daily?</item>
+        <item>Are you wearing blue jeans right now?</item>
+        <item>Do you like the Canadian band Rush?</item>
+        <item>Do you have ten or more fingers?</item>
+        <item>Have you ingested a vegetable\n in the last 45 hours?</item>
+        <item>Are you registered to vote?</item>
+        <item>Did you lie about any of your previous answers?</item>
+        <item>Was the Battle of the Bulge the most\n influential battle of \nthe revolutionary war?</item>
+        <item>How are you feeling?</item>
+    </string-array>
+
+    <string-array name = "oracleSex">
+        <item>Choose Sex</item>
+        <item>Male</item>
+        <item>Female</item>
+    </string-array>
+    <string-array name = "oracleCountry">
+        <item>Choose Country</item>
+        <item>United States</item>
+        <item>China</item>
+        <item>South Korea</item>
+        <item>India</item>
+        <item>Australia</item>
+        <item>Austria</item>
+        <item>Belgium</item>
+        <item>Brazil</item>
+        <item>Canada</item>
+        <item>Denmark</item>
+        <item>France</item>
+        <item>Germany</item>
+        <item>Indonesia</item>
+        <item>Italy</item>
+        <item>Japan</item>
+        <item>Malaysia</item>
+        <item>Mexico</item>
+        <item>The Netherlands</item>
+        <item>Pakistan</item>
+        <item>Singapore</item>
+        <item>Spain</item>
+        <item>Sri Lanka</item>
+        <item>Sweden</item>
+        <item>Taiwan</item>
+        <item>Thailand</item>
+        <item>Turkey</item>
+        <item>United Kingdom</item>
+        <item>Vietnam</item>
+        <item>Other</item>
+    </string-array>
+    <string-array name = "gods">
+        <item>Choose Deity</item>
+        <item>Zeus</item>
+        <item>Ishtar</item>
+        <item>Cthulhu</item>
+        <item>Talos</item>
+        <item>Loki</item>
+        <item>Anubis</item>
+        <item>Geoff Challen</item>
+        <item>I serve no god.</item>
+    </string-array>
+    <string-array name = "yesno">
+        <item>Choose Yes/No</item>
+        <item>Yes</item>
+        <item>No</item>
+    </string-array>
     <string name="coldWet">It is Cold and Wet.</string>
     <string name="hotString">It is Hot.</string>
     <string name="hotWet">It is Hot  and Wet.</string>

@@ -32,15 +32,15 @@ public class BetterClock extends AppCompatActivity {
 
         boolean isDay = false;
 
-        if (month >= 11 || month == 1) {
+        if (month >= 10 || month == 0) {
             if (hour >= 9 && hour < 17) {
                 isDay = true;
             }
-        } else if (month == 2) {
+        } else if (month == 1) {
             if (hour >= 8 && hour < 18) {
                 isDay = true;
             }
-        } else if (month >= 5 && month < 8) {
+        } else if (month >= 4 && month < 7) {
             if (hour >= 6 && hour < 22) {
                 isDay = true;
             }

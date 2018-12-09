@@ -103,8 +103,7 @@
         app:layout_constraintBottom_toTopOf="@+id/botButton"
         app:layout_constraintEnd_toStartOf="@+id/oracleButton"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/clockButton"
-        tools:srcCompat="@tools:sample/backgrounds/scenic" />
+        app:layout_constraintTop_toBottomOf="@+id/clockButton" />
 
     <TextView
         android:id="@+id/ballText"
@@ -157,11 +156,11 @@
         android:layout_marginBottom="8dp"
         android:onClick="openOracle"
         android:background="@drawable/roundedcorners"
+        android:src="@drawable/better_oracle_icon"
         app:layout_constraintBottom_toTopOf="@+id/calcButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/ballButton"
-        app:layout_constraintTop_toBottomOf="@+id/weatherButton"
-        tools:srcCompat="@tools:sample/backgrounds/scenic" />
+        app:layout_constraintTop_toBottomOf="@+id/weatherButton" />
 
     <ImageButton
         android:id="@+id/calcButton"
@@ -179,8 +178,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/botButton"
-        app:layout_constraintTop_toBottomOf="@+id/oracleButton"
-        tools:srcCompat="@tools:sample/backgrounds/scenic" />
+        app:layout_constraintTop_toBottomOf="@+id/oracleButton" />
 
     <TextView
         android:id="@+id/oracleText"
