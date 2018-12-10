@@ -36,11 +36,12 @@ import java.util.Locale;
 public class BetterOracle extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     private static final String TAG = "ORACLELOG";
-    String sex = "";
-    String sexHold = "";
-    String country = "";
-    String countryHold = "";
-    String dateFormat = "";
+    private String sex = "";
+    private String sexHold = "";
+    private String country = "";
+    private String countryHold = "";
+    private String dateFormat = "";
+    private String adjectiveDeity = "";
     int birthYear = 0;
     int year = 0;
     private static RequestQueue requestQueue;
@@ -66,7 +67,7 @@ public class BetterOracle extends AppCompatActivity implements AdapterView.OnIte
         spinner2 = findViewById(R.id.spinner2);
         spinner3 = findViewById(R.id.spinner3);
         spinner4 = findViewById(R.id.spinner4);
-        mDisplayDate = (TextView) findViewById(R.id.tvDate);
+        mDisplayDate = findViewById(R.id.tvDate);
         spinner1.setVisibility(View.GONE);
         spinner2.setVisibility(View.GONE);
         spinner3.setVisibility(View.GONE);
@@ -78,7 +79,7 @@ public class BetterOracle extends AppCompatActivity implements AdapterView.OnIte
         dateFormat = new SimpleDateFormat("yyyy-MM-dd",
                 Locale.ENGLISH).format(now);
 
-        ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(BetterOracle.this,
+        ArrayAdapter<String> myAdapter = new ArrayAdapter<>(BetterOracle.this,
                 android.R.layout.simple_list_item_1,
                 getResources().getStringArray(R.array.oracleSex));
         myAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -89,7 +90,7 @@ public class BetterOracle extends AppCompatActivity implements AdapterView.OnIte
 
 
 
-        ArrayAdapter<String> myAdapter2 = new ArrayAdapter<String>(BetterOracle.this,
+        ArrayAdapter<String> myAdapter2 = new ArrayAdapter<>(BetterOracle.this,
                 android.R.layout.simple_list_item_1,
                 getResources().getStringArray(R.array.oracleCountry));
         myAdapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -100,7 +101,7 @@ public class BetterOracle extends AppCompatActivity implements AdapterView.OnIte
 
 
 
-        ArrayAdapter<String> myAdapter3 = new ArrayAdapter<String>(BetterOracle.this,
+        ArrayAdapter<String> myAdapter3 = new ArrayAdapter<>(BetterOracle.this,
                 android.R.layout.simple_list_item_1,
                 getResources().getStringArray(R.array.gods));
         myAdapter3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -111,7 +112,7 @@ public class BetterOracle extends AppCompatActivity implements AdapterView.OnIte
 
 
 
-        ArrayAdapter<String> myAdapter4 = new ArrayAdapter<String>(BetterOracle.this,
+        ArrayAdapter<String> myAdapter4 = new ArrayAdapter<>(BetterOracle.this,
                 android.R.layout.simple_list_item_1,
                 getResources().getStringArray(R.array.yesno));
         myAdapter4.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -149,7 +150,8 @@ public class BetterOracle extends AppCompatActivity implements AdapterView.OnIte
         mDateSetListener = new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                Log.d(TAG, "hello delilah whats it like in new york city");
+                String date = "" + (month + 1) + "/" + dayOfMonth + "/" + year;
+                mDisplayDate.setText(date);
                 birthYear = 2018 - year;
                 phase = 3;
                 submitButton.setVisibility(View.VISIBLE);
@@ -161,10 +163,12 @@ public class BetterOracle extends AppCompatActivity implements AdapterView.OnIte
 
         @Override
         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-            switch(parent.getId()) {
+            label:
+            switch (parent.getId()) {
                 case R.id.spinner1:
-                    switch(position) {
+                    switch (position) {
                         case 0:
+                            submitButton.setVisibility(View.GONE);
                             break;
                         case 1:
                             sexHold = "male";
@@ -180,7 +184,6 @@ public class BetterOracle extends AppCompatActivity implements AdapterView.OnIte
                     break;
                 case R.id.spinner2:
                     countryHold = getResources().getStringArray(R.array.oracleCountry)[position];
-                    Log.d(TAG, countryHold);
                     if (countryHold.equals("South Korea")) {
                         countryHold = "Rep%20of%20Korea";
                     } else if (countryHold.equals("The Netherlands")) {
@@ -193,16 +196,56 @@ public class BetterOracle extends AppCompatActivity implements AdapterView.OnIte
                         countryHold = "Sri%20Lanka";
                     } else if (countryHold.equals("Other")) {
                         countryHold = "United%20States";
+                    } else if (countryHold.equals("Choose Country")) {
+                        submitButton.setVisibility(View.GONE);
+                        break;
                     }
 
                     phase = 2;
                     submitButton.setVisibility(View.VISIBLE);
                     break;
                 case R.id.spinner3:
+
+                    String deity = getResources().getStringArray(R.array.gods)[position];
+
+                    switch (deity) {
+                        case "Choose Deity":
+                            submitButton.setVisibility(View.GONE);
+                            break label;
+                        case "Zeus":
+                            adjectiveDeity = " a horrible ";
+                            break;
+                        case "Ishtar":
+                            adjectiveDeity = " a peaceful ";
+                            break;
+                        case "Cthulu":
+                            adjectiveDeity = " a gruesome ";
+                            break;
+                        case "Talos":
+                            adjectiveDeity = " a warrior's ";
+                            break;
+                        case "Loki":
+                            adjectiveDeity = " a very interesting";
+                            break;
+                        case "Anubis":
+                            adjectiveDeity = " a proper ";
+                            break;
+                        case "Geoff Challen":
+                            adjectiveDeity = " due to fatal checkstyle errors leading to your ";
+                            break;
+                        case "I serve no god.":
+                            adjectiveDeity = " a very average ";
+                            break;
+                    }
+
                     phase = 4;
                     submitButton.setVisibility(View.VISIBLE);
                     break;
                 case R.id.spinner4:
+                    if (getResources().getStringArray(R.array.yesno)[position].equals("Choose Yes/No")) {
+                        submitButton.setVisibility(View.GONE);
+                        break;
+                    }
                     phase = 5;
                     submitButton.setVisibility(View.VISIBLE);
                     break;
@@ -212,7 +255,7 @@ public class BetterOracle extends AppCompatActivity implements AdapterView.OnIte
 
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
-
+        submitButton.setVisibility(View.GONE);
     }
 
     public void changePhase(View view) {
@@ -275,7 +318,8 @@ public class BetterOracle extends AppCompatActivity implements AdapterView.OnIte
                                 double trouble = (double) Float.valueOf(response.getString("remaining_life_expectancy"));
                                 life = (int) trouble;
                                 TextView result = findViewById(R.id.oracleResult);
-                                result.setText("According to statistics, you will die a horrible death in about " + life + " years.");
+                                String message = "According to statistics, you will die" + adjectiveDeity + "death in about " + life + " years.";
+                                result.setText(message);
                                 Log.d(TAG, "" + life);
                             } catch (JSONException e) {
                                 Log.d(TAG, "huckle");

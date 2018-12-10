@@ -140,4 +140,9 @@
     <string name="the_button_to_open_better_calc">The button to open Better Calc</string>
     <string name="betterRules">Better Rules</string>
     <string name="better_game_play">Better Game: Play Perfected</string>
+    <string name="betterPointsText">Total Better Points:</string>
+    <string name="pointsText">Total Points:</string>
+    <string name="winsText">Total Wins:</string>
+    <string name="betterWinsText">Total Better Wins:</string>
+    <string name="betterGameplay">Better Gameplay</string>
 </resources>
