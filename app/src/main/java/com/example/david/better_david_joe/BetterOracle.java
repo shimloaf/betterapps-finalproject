@@ -186,6 +186,8 @@ public class BetterOracle extends AppCompatActivity implements AdapterView.OnIte
                     countryHold = getResources().getStringArray(R.array.oracleCountry)[position];
                     if (countryHold.equals("South Korea")) {
                         countryHold = "Rep%20of%20Korea";
+                    } else if (countryHold.equals("Taiwan")) {
+                        countryHold = "China";
                     } else if (countryHold.equals("The Netherlands")) {
                         countryHold = "The%20Netherlands";
                     } else if (countryHold.equals("United States")) {
@@ -218,7 +220,7 @@ public class BetterOracle extends AppCompatActivity implements AdapterView.OnIte
                         case "Ishtar":
                             adjectiveDeity = " a peaceful ";
                             break;
-                        case "Cthulu":
+                        case "Cthulhu":
                             adjectiveDeity = " a gruesome ";
                             break;
                         case "Talos":
