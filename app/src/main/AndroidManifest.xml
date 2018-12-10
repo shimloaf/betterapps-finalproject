@@ -27,27 +27,27 @@
                 <category android:name="android.intent.category.HOME"/>
             </intent-filter>
         </activity>
-        <activity android:name=".BetterClock" android:label="@string/better_clock" >
+        <activity android:name=".BetterClock" android:label="@string/better_clock_clear" >
             <intent-filter>
                 <action android:name="android.intent.action.VIEW"/>
             </intent-filter>
         </activity>
-        <activity android:name=".BetterWeather" android:label="@string/better_weather" >
+        <activity android:name=".BetterWeather" android:label="@string/better_weather_forecast" >
             <intent-filter>
                 <action android:name="android.intent.action.VIEW"/>
             </intent-filter>
         </activity>
-        <activity android:name=".BetterEight" android:label="@string/better_8_ball" >
+        <activity android:name=".BetterEight" android:label="@string/better_8_ball_verdict" >
             <intent-filter>
                 <action android:name="android.intent.action.VIEW"/>
             </intent-filter>
         </activity>
-        <activity android:name=".BetterOracle" android:label="@string/better_oracle" >
+        <activity android:name=".BetterOracle" android:label="@string/better_oracle_premonition" >
             <intent-filter>
                 <action android:name="android.intent.action.VIEW"/>
             </intent-filter>
         </activity>
-        <activity android:name=".BetterCalc" android:label="@string/better_calculator" >
+        <activity android:name=".BetterCalc" android:label="@string/better_calculator_math" >
             <intent-filter>
                 <action android:name="android.intent.action.VIEW"/>
             </intent-filter>
