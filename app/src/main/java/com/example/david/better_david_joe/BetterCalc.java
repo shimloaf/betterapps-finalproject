@@ -25,6 +25,8 @@ public class BetterCalc extends AppCompatActivity {
     private String resultS = "0";
     private int clear = 0;
     private String error = "n/a";
+    private boolean negative2 = false;
+    private boolean negative1 = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -108,6 +110,9 @@ public class BetterCalc extends AppCompatActivity {
     public double calculateEquation() {
 
         double result;
+
+        negative1 = false;
+        negative2 = false;
 
         switch (sign) {
             case "-":
@@ -220,6 +225,7 @@ public class BetterCalc extends AppCompatActivity {
                 if (num1S.length() == 2 && num1S.charAt(0) == '-'){
                     num1 = 0;
                     num1S = "0";
+                    negative1 = false;
                     updateEquation();
                     return;
                 }
@@ -236,6 +242,8 @@ public class BetterCalc extends AppCompatActivity {
             if (num2S.length() == 2 && num2S.charAt(0) == '-'){
                 num2 = 0;
                 num2S = "";
+                phase = 2;
+                negative2 = false;
                 updateEquation();
                 return;
             }
@@ -264,6 +272,8 @@ public class BetterCalc extends AppCompatActivity {
             num2S = "";
             num1 = 0;
             sign = "";
+            negative1 = false;
+            negative2 = false;
             num2 = 0;
             phase = 1;
             updateEquation();
@@ -338,19 +348,21 @@ public class BetterCalc extends AppCompatActivity {
 
         if (phase == 1) {
 
-            if (num1 == 0) {
+            if (num1 == 0 || negative1) {
                 return;
             }
 
             num1 = -1 * num1;
             num1S = "-" + num1S;
             updateEquation();
+            negative1 = true;
         } else if (phase == 3) {
 
-            if (num2 == 0) {
+            if (num2 == 0 || negative2 == true) {
                 return;
             }
 
+            negative2 = true;
             num2 = -1 * num2;
             num2S = "-" + num2S;
             updateEquation();

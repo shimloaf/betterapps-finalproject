@@ -227,7 +227,7 @@ public class BetterOracle extends AppCompatActivity implements AdapterView.OnIte
                             adjectiveDeity = " a warrior's ";
                             break;
                         case "Loki":
-                            adjectiveDeity = " a very interesting";
+                            adjectiveDeity = " a very interesting ";
                             break;
                         case "Anubis":
                             adjectiveDeity = " a proper ";
