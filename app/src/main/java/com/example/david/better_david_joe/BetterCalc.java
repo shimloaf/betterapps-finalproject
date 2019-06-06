@@ -2,17 +2,13 @@ package com.example.david.better_david_joe;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.TextView;
-
-import org.w3c.dom.Text;
-
-import java.util.Calendar;
 
 public class BetterCalc extends AppCompatActivity {
 
-    private static final String TAG = "CALCLOG";
+    private static final String TAG = "CALC_LOG";
 
     private String num1S = "0";
     private String num2S = "";
@@ -20,7 +16,6 @@ public class BetterCalc extends AppCompatActivity {
     private String sign = "";
     private int num2 = 0;
     private int phase = 1;
-    private String prev = "0";
     private double result = 0.0;
     private String resultS = "0";
     private int clear = 0;
@@ -95,15 +90,21 @@ public class BetterCalc extends AppCompatActivity {
     }
 
     public void setResult() {
-        if (error.equals("n/a")){
-            resultS = "≈" + (int) result + "" + " thousands";
-        } else if (error.equals("integerOverflowError")) {
-            resultS = "≈" + (int) result + " big numbers";
-            error = "n/a";
-        } else if (error.equals("divideByZero")) {
-            resultS = "≈" + (int) result + " impossibilities";
-            error = "n/a";
+        switch (error) {
+            case "n/a":
+                resultS = "≈" + (int) result + "" + " thousands";
+                break;
+            case "integerOverflowError":
+                resultS = "≈" + (int) result + " big numbers";
+                error = "n/a";
+                break;
+            case "divideByZero":
+                resultS = "≈" + (int) result + " impossibilities";
+                error = "n/a";
+                break;
         }
+
+        Log.d(TAG, "Calc Error");
     }
 
 
@@ -202,7 +203,6 @@ public class BetterCalc extends AppCompatActivity {
             }
         }
 
-        prev = "" + n;
     }
 
     public void setSymbol(String signArg) {
@@ -358,7 +358,7 @@ public class BetterCalc extends AppCompatActivity {
             negative1 = true;
         } else if (phase == 3) {
 
-            if (num2 == 0 || negative2 == true) {
+            if (num2 == 0 || negative2) {
                 return;
             }
 
@@ -387,3 +387,7 @@ public class BetterCalc extends AppCompatActivity {
 
     }
 }
+
+
+
+

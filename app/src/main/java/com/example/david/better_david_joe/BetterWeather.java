@@ -2,7 +2,6 @@ package com.example.david.better_david_joe;
 
 import android.Manifest;
 import android.content.Context;
-import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationManager;
@@ -13,7 +12,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
@@ -22,26 +20,19 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.Volley;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.Calendar;
-import java.util.HashMap;
-import java.util.Map;
 
 public class BetterWeather extends AppCompatActivity implements ActivityCompat.OnRequestPermissionsResultCallback{
-    private static final String TAG = "WEATHERLOG";
+    private static final String TAG = "WEATHER_LOG";
     private static final int REQUEST_LOCATION_CODE = 1;
     private static RequestQueue requestQueue;
     private String weatherType = "A bit Challen Out Today";
     private int temperature;
-    private static int woeid;
-    private boolean hot;
-    private boolean wet;
-    private String city;
+    private static int earth_id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,7 +77,7 @@ public class BetterWeather extends AppCompatActivity implements ActivityCompat.O
      */
     void startAPICall(final float latitude, final float longitude) {
 
-        //first API call for woeid
+        //first API call for where on earth id
         try {
             JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(
                     Request.Method.GET,
@@ -98,13 +89,12 @@ public class BetterWeather extends AppCompatActivity implements ActivityCompat.O
 
                             try {
                                 JSONObject firstLocation = response.getJSONObject(0);
-                                woeid = firstLocation.getInt("woeid");
-                                city = firstLocation.getString("title");
+                                earth_id = firstLocation.getInt("woeid");
                                 //second API call for weather data
                                 try {
                                     JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
                                             Request.Method.GET,
-                                            "https://www.metaweather.com/api/location/" + woeid + "/",
+                                            "https://www.metaweather.com/api/location/" + earth_id + "/",
                                             null,
                                             new Response.Listener<JSONObject>() {
                                                 @Override
@@ -155,13 +145,12 @@ public class BetterWeather extends AppCompatActivity implements ActivityCompat.O
 
 
     private void initializeLayout() {
-        String theReport = weatherType + " and " + temperature;
         TextView weatherReport = findViewById(R.id.weatherReport);
         ImageView weatherBackground = findViewById(R.id.weatherBackdrop);
 
-        hot = temperature > 25;
+        boolean hot = temperature > 0;
 
-        wet = !weatherType.equals("c") && !weatherType.equals("lc")
+        boolean wet = !weatherType.equals("c") && !weatherType.equals("lc")
                 && !weatherType.equals("hc");
 
         String geoffChallen;

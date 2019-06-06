@@ -1,6 +1,5 @@
 package com.example.david.better_david_joe;
 
-import android.app.Application;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;

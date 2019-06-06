@@ -12,7 +12,7 @@ import android.view.View;
 
 public class BetterApp extends AppCompatActivity implements ActivityCompat.OnRequestPermissionsResultCallback {
 
-    private static final String TAG = "MAINLOG";
+    private static final String TAG = "MAIN_LOG";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

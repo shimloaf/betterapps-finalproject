@@ -1,21 +1,15 @@
 package com.example.david.better_david_joe;
 
 import android.os.Bundle;
-import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.TextView;
 import android.widget.ImageView;
 import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
-import android.view.View;
-import android.view.View.OnClickListener;
 
 public class BetterClock extends AppCompatActivity {
 
     private static final String TAG = "CLOCKLOG";
-    private int time;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +44,7 @@ public class BetterClock extends AppCompatActivity {
             }
         }
 
-        String dayMessage = "@string/geoffChallen";
+        String dayMessage;
 
         if (isDay) {
             dayMessage = "It is currently Day.";
@@ -62,7 +56,7 @@ public class BetterClock extends AppCompatActivity {
             dayNight.setTextColor(getResources().getColor(R.color.nightColor));
         }
         dayNight.setText(dayMessage);
-
+        Log.d(TAG, "Time Set");
 
 
 

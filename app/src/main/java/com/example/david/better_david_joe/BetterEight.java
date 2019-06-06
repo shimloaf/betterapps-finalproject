@@ -7,22 +7,17 @@ import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.widget.Button;
 import android.widget.TextView;
 import android.view.View;
 public class BetterEight extends AppCompatActivity{
 
-    private static final String TAG = "EIGHTLOG";
-    private Button mButton;
+    private static final String TAG = "EIGHT_LOG";
     private String message;
-    private SensorManager mSensorManager;
-    private Sensor mSensor;
     private float acceleration;
     private float prevAcceleration;
-    private float shakinVal;
+    private float shakingVal;
     private boolean canShake = true;
 
     @Override
@@ -30,13 +25,13 @@ public class BetterEight extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_eight_screen);
 
-        mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
+        SensorManager mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         mSensorManager.registerListener(sensorListener, mSensorManager.getDefaultSensor
                 (Sensor.TYPE_ACCELEROMETER), 1000000);
 
-        acceleration = mSensorManager.GRAVITY_EARTH;
-        prevAcceleration = mSensorManager.GRAVITY_EARTH;
-        shakinVal = 0.00f;
+        acceleration = SensorManager.GRAVITY_EARTH;
+        prevAcceleration = SensorManager.GRAVITY_EARTH;
+        shakingVal = 0.00f;
 
         message = "Ask it question \nthen give it \na shake...";
         TextView result = findViewById(R.id.ballResult);
@@ -51,6 +46,8 @@ public class BetterEight extends AppCompatActivity{
         @Override
         public void onSensorChanged(SensorEvent event) {
 
+                Log.d(TAG, "Sensor Change Received");
+
                 float x = event.values[0];
                 float y = event.values[1];
                 float z = event.values[2];
@@ -59,10 +56,10 @@ public class BetterEight extends AppCompatActivity{
                 acceleration = (float) Math.sqrt((double) (x * x + y * y + z * z));
                 float delta = acceleration - prevAcceleration;
 
-                shakinVal = shakinVal * 0.9f + delta;
+                shakingVal = shakingVal * 0.9f + delta;
 
 
-                if (shakinVal > 12 && canShake) {
+                if (shakingVal > 12 && canShake) {
 
                     canShake = false;
 
@@ -110,7 +107,7 @@ public class BetterEight extends AppCompatActivity{
     public void pick_option() {
         TextView result = findViewById(R.id.ballResult);
 
-        int choice = 0;
+        int choice;
 
         choice = (int) (Math.random()*40);
         message = "I don't know.";
@@ -204,7 +201,7 @@ public class BetterEight extends AppCompatActivity{
                 message = "Why the hell \nare you asking \nan 8-ball?";
                 break;
             case 29:
-                message = "Uhhhhh... Hang on I \nknow this one... \nUhhhh... Sixty\npoint Two?";
+                message = "Uhhhh... Hang on I \nknow this one... \nUhhhh... Sixty\npoint Two?";
                 break;
             case 30:
                 message = "Let me answer \nyour question with \nanother question. \nWho cares?";

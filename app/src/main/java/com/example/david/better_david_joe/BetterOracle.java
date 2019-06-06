@@ -11,31 +11,24 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
-import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
-
 import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
 import java.util.Calendar;
 import java.util.Date;
-
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
-
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.util.Calendar;
 import java.util.Locale;
 
 public class BetterOracle extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
-    private static final String TAG = "ORACLELOG";
+    private static final String TAG = "ORACLE_LOG";
     private String sex = "";
     private String sexHold = "";
     private String country = "";
@@ -53,7 +46,6 @@ public class BetterOracle extends AppCompatActivity implements AdapterView.OnIte
     private Spinner spinner2;
     private Spinner spinner3;
     private Spinner spinner4;
-    private int question;
     private int taps = 0;
     private int life = 0;
 
@@ -121,9 +113,6 @@ public class BetterOracle extends AppCompatActivity implements AdapterView.OnIte
         spinner4.setOnItemSelectedListener(this);
 
 
-        question = (int) (Math.floor(Math.random() * 4));
-
-
         mDisplayDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -184,23 +173,31 @@ public class BetterOracle extends AppCompatActivity implements AdapterView.OnIte
                     break;
                 case R.id.spinner2:
                     countryHold = getResources().getStringArray(R.array.oracleCountry)[position];
-                    if (countryHold.equals("South Korea")) {
-                        countryHold = "Rep%20of%20Korea";
-                    } else if (countryHold.equals("Taiwan")) {
-                        countryHold = "China";
-                    } else if (countryHold.equals("The Netherlands")) {
-                        countryHold = "The%20Netherlands";
-                    } else if (countryHold.equals("United States")) {
-                        countryHold = "United%20States";
-                    } else if (countryHold.equals("United Kingdom")) {
-                        countryHold = "United%20Kingdom";
-                    } else if (countryHold.equals("Sri Lanka")) {
-                        countryHold = "Sri%20Lanka";
-                    } else if (countryHold.equals("Other")) {
-                        countryHold = "United%20States";
-                    } else if (countryHold.equals("Choose Country")) {
-                        submitButton.setVisibility(View.GONE);
-                        break;
+                    switch (countryHold) {
+                        case "South Korea":
+                            countryHold = "Rep%20of%20Korea";
+                            break;
+                        case "Taiwan":
+                            countryHold = "China";
+                            break;
+                        case "The Netherlands":
+                            countryHold = "The%20Netherlands";
+                            break;
+                        case "United States":
+                            countryHold = "United%20States";
+                            break;
+                        case "United Kingdom":
+                            countryHold = "United%20Kingdom";
+                            break;
+                        case "Sri Lanka":
+                            countryHold = "Sri%20Lanka";
+                            break;
+                        case "Other":
+                            countryHold = "United%20States";
+                            break;
+                        case "Choose Country":
+                            submitButton.setVisibility(View.GONE);
+                            break label;
                     }
 
                     phase = 2;
@@ -353,7 +350,4 @@ public class BetterOracle extends AppCompatActivity implements AdapterView.OnIte
         }
     }
 
-    public void lifeSux (int setLife) {
-        life = setLife;
-    }
 }
